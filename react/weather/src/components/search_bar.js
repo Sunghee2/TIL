@@ -28,9 +28,9 @@ class SearchBar extends Component {
   render() {
     const clsName = (this.props.loading) ? 'btn btn-primary loading':'btn btn-primary';
     return(
-      <form onSubmit={event => this.onSubmit(event)}>
+      <form className="row" onSubmit={event => this.onSubmit(event)}>
         <input 
-          className="col-11" 
+          className="col-11 form-control" 
           type="text" 
           placeholder="city" 
           value={this.state.term}

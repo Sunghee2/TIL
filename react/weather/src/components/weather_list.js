@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import GoogleMap from './google_map';
 
 class WeatherList extends Component {
   renderList(weathers) {
@@ -7,8 +8,10 @@ class WeatherList extends Component {
       return <div></div>;
     }
     return weathers.map(weather => (
-      <tr key={weather.id}>
-        <td scope="row">{weather.city.name}</td>
+      <tr key={weather.city.id}>
+        <td scope="row">
+          <GoogleMap lat={weather.city.coord.lat} lng={weather.city.coord.lon}/>
+        </td>
         <td>{Math.round(weather.list[0].main.temp-273.15, 1)}</td>
         <td>{weather.list[0].main.pressure}</td>
         <td>{weather.list[0].main.humidity}</td>

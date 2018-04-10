@@ -1,3 +1,8 @@
 .SearchBar {
     margin-bottom: 3%;
 }
+
+.map {
+    height: 220px;
+    width: 220px;
+}
