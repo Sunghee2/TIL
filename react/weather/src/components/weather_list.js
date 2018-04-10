@@ -7,11 +7,11 @@ class WeatherList extends Component {
       return <div></div>;
     }
     return weathers.map(weather => (
-      <tr>
-        <td scope="row">{weather.city}</td>
-        <td>{weather.temperature}</td>
-        <td>{weather.pressure}</td>
-        <td>{weather.humidity}</td>
+      <tr key={weather.id}>
+        <td scope="row">{weather.city.name}</td>
+        <td>{Math.round(weather.list[0].main.temp-273.15, 1)}</td>
+        <td>{weather.list[0].main.pressure}</td>
+        <td>{weather.list[0].main.humidity}</td>
       </tr>
     ));
   }
@@ -37,7 +37,7 @@ class WeatherList extends Component {
 
 function mapStateToProps({weathers}) {
   return {
-    weathers
+    weathers: weathers.data
   };
 }
 

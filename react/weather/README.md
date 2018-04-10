@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Table of Contents
 
-- [예제1/ 목록출력](예제1/ 목록출력)
+- [예제1/ 목록출력](#예제1/ 목록출력)
 
 ## 예제1/ 목록출력
 
@@ -41,3 +41,19 @@ weather/
 > ###### Cannot Read Property map of undefined 
 >
 > : weathers이 null이라서.
+
+
+
+## 완성
+
+
+
+##### 에러해결
+
+> ######'dispatch' is not a function
+>
+> : connect() 에 mapDispatchToProps만 씀 > mapStateToProps도 추가
+>
+> ###### submit할 때마다 data가 리셋됨
+>
+> : event.preventDefault() -> 이벤트가 상위 DOM으로 전파되지 않도록 하는 코드 추가

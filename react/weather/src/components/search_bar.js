@@ -1,12 +1,57 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchWeather} from '../actions';
 
-export default class SearchBar extends Component {
+
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      term: ''
+    };
+  }
+
+
+  onInputChange(term) {
+    this.setState({
+      term: term
+    });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    this.props.fetchWeather(this.state.term);
+    this.setState({term: ''});
+  }
+
   render() {
+    const clsName = (this.props.loading) ? 'btn btn-primary loading':'btn btn-primary';
     return(
-      <div className="row">
-        <input className="col-11" type="text" placeholder="city"/>
-        <button className="btn btn-primary" type="button">Search</button>
-      </div>
+      <form onSubmit={event => this.onSubmit(event)}>
+        <input 
+          className="col-11" 
+          type="text" 
+          placeholder="city" 
+          value={this.state.term}
+          onChange={(event)=>this.onInputChange(event.target.value)}/>
+        <button className={clsName} type="submit">
+          <i className='fa fa-spinner fa-spin'/>
+          Search
+        </button>
+      </form>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    loading: state.weathers.loading
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchWeather}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
