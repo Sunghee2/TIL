@@ -1,10 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+weather api : https://openweathermap.org/api
 
+map api : Google
 
 
 
 ## 예제1/ 목록출력
+
+
 
 ![예제화면](./1.JPG)
 
@@ -43,6 +47,8 @@ weather/
 
 
 ## 지도 추가
+
+Google Developers Console -> Google Maps JavaScript API
 
 ![예제화면](./2.JPG)
 
