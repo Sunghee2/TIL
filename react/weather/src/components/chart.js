@@ -20,6 +20,6 @@ const Chart = (props) => {
       <div>{avg(props.data)}{props.unit}</div>
     </div>
   );
-}
+};
 
 export default Chart;
