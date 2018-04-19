@@ -32,6 +32,7 @@ router.put('/:id', catchErrors(async (req, res) => {
 }));
 
 router.post('/', catchErrors(async(req, res) => {
+  console.log(req.body);
   const post = await Post.create({
     title: req.body.title,
     name: req.body.name,

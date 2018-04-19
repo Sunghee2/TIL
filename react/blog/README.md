@@ -38,7 +38,11 @@
 >
 > ##### Error: No default engine was specified and no extension was provided.
 >
-> 
+> url을 잘못씀
+>
+> ##### post했을 때 null값이 들어감.
+>
+> post form을 json으로 해놓고 url로 보냄......json으로 보내기.
 
 
 
