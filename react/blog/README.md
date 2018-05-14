@@ -46,3 +46,15 @@
 
 
 
+##### 기억
+
+tr에 key 넣기
+
+원래 submit하려는 것 중단.
+
+```javascript
+  onSubmit(event) {
+    event.preventDefault();
+  }
+```
+
