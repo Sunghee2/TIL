@@ -27,7 +27,7 @@ result = FOREACH sort_avg_ratings GENERATE title, avg_rating;
 DUMP result;
 ```
 
-![result](/Users/sunghee/Documents/GitHub/TIL/hadoop/screenshot/pig_rating1_result.png)
+![result](./screenshot/pig_rating1_result.png)
 
 :bug: Failed to generate logical plan. Nested exception: org.apache.pig.backend.executionengine.ExecException: ERROR 1070: Could not resolve sum using imports: [, java.lang., org.apache.pig.builtin., org.apache.pig.impl.builtin.] 
 
