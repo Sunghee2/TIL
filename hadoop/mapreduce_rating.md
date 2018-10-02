@@ -22,7 +22,9 @@
 
 > _는 key를 none으로 본다는 것(mapper에서 가능)
 
+:bug: UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 20: ordinal not in range(128)
 
+> `a.encode('utf-8')`
 
 ### example 1
 
