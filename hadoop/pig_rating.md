@@ -18,9 +18,9 @@ movies = LOAD '/user/maria_dev/ml-latest-small/movies.csv'
           	AS (movieId:int, title:chararray, genres:chararray);
 
 grouped = GROUP ratings BY movieId;
-count_ratings = FOREACH grouped GENERATE FlATTEN(group), ratings.rating AS ratings, 					COUNT(ratings.rating) AS (count_rating);
+count_ratings = FOREACH grouped GENERATE FlATTEN(group), ratings.rating AS ratings, COUNT(ratings.rating) AS (count_rating);
 filter_ratings = FILTER count_ratings BY count_rating >= 100; 
-avg_ratings = FOREACH filter_ratings GENERATE group, 													ROUND_TO(SUM(ratings.rating)/count_rating, 2) AS avg_rating;
+avg_ratings = FOREACH filter_ratings GENERATE group, ROUND_TO(SUM(ratings.rating)/count_rating, 2) AS avg_rating;
 joined = JOIN avg_ratings BY (group), movies BY (movieId);
 sort_avg_ratings = ORDER joined BY avg_rating ASC;
 result = FOREACH sort_avg_ratings GENERATE title, avg_rating;
