@@ -2,7 +2,7 @@
 
 bitcoin core 공부하면서 헷갈린 것들 다시 정리한 것  
 
-
+  
 
 **nonce (블록 헤더에 포함)**
 
@@ -24,17 +24,17 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 비트코인에서 사용하는 문제는 위와 같이 몇 개 이상의 0으로 시작하는 해시값을 찾으라는 것(hash값이 bits로 지정된 난이도값보다 작게 생성될 때 해당 블록 생성 성공 = 채굴). 원래는 임의의 문자열이 아닌 블록체인에 추가된 가장 최신 블록의 헤더가 해시의 대상이 됨.   
 
-
+  
 
 **Merkle–Damgård construction(M-D)**
 
 : 한 개의 메시지를 해싱할 때 메시지를 같은 크기의 여러 블록으로 나눔 -> 그 블록을 하나의 압축함수(compress)를 이용하여 내부 상태와 함께 섞음 -> 내부 상태의 마지막 값(final hash) = 메시지의 해시 값 
 
-![img](https:////upload.wikimedia.org/wikipedia/commons/thumb/e/e4/WidePipeHashFunction.png/400px-WidePipeHashFunction.png)
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/WidePipeHashFunction.png/400px-WidePipeHashFunction.png)
 
 > 사진 : 위키피디아  
 
-
+  
 
 **length-extension attack**
 
@@ -42,7 +42,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 => double hash 연산 사용(해시 함수 2개로 구성)  
 
-
+  
 
 **머클트리(Merkle Tree)**
 
@@ -56,7 +56,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 -> 특정 거래가 블록 내부에 포함되는지 여부를 검증하는데 효과적  
 
-
+  
 
 **Public Key, Private Key, Address**
 
@@ -70,7 +70,7 @@ Address : RIPEMD160(SHA256(public key)) -> Base58 Encoding
 
 > 사진 : http://ihpark92.tistory.com/6?category=746286  
 
-
+  
 
 > 출처
 >
