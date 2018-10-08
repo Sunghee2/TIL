@@ -35,3 +35,33 @@ DUMP result;
 
 :memo: round는 pig에서 자릿수x => round_to
 
+
+
+### example 2
+
+### example 3
+
+```
+ratings = LOAD '/user/maria_dev/ml-latest-small/ratings.csv' 
+			USING org.apache.pig.piggybank.storage.CSVExcelStorage(',',
+            	'NO_MULTILINE','NOCHANGE','SKIP_INPUT_HEADER')
+            AS (userId:int, movieId:int, rating:float, timestamp:chararray);
+movies = LOAD '/user/maria_dev/ml-latest-small/movies.csv'
+			USING org.apache.pig.piggybank.storage.CSVExcelStorage(',',
+            	'NO_MULTILINE','NOCHANGE','SKIP_INPUT_HEADER')
+          	AS (movieId:int, title:chararray, genres:chararray);
+     
+strsplittobag_movies = FOREACH movies GENERATE movieId AS movieId, FLATTEN(STRSPLITTOBAG(genres, '\\|', 0)) AS genres;
+movieId_ratings = FOREACH ratings GENERATE movieId, rating;
+joined = JOIN strsplittobag_movies BY (movieId), movieId_ratings BY (movieId);
+grouped = GROUP joined BY genres;
+count_ratings = FOREACH grouped GENERATE FLATTEN(group), COUNT(joined) AS count_rating, ROUND_TO(SUM(joined.rating)/COUNT(joined), 2) AS avg_rating;
+sort_count = ORDER count_ratings BY count_rating DESC;
+limit_genres = LIMIT sort_count 1;
+DUMP limit_genres;
+```
+
+:bug: strsplittobag -> unexpected
+
+> '\\|' \가 2개임
+
