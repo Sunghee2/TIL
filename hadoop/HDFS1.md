@@ -1,7 +1,11 @@
 **접속**
 
 1. Ambari : https://localhost:8080 (maria_dev, maria_dev)
+
 2. maria_dev/hadoop : `$ ssh maria_dev@localhost -p 2222 `
+
+3. `$ logout`
+
 
 **파일 리스트**
 
@@ -37,3 +41,15 @@ $ scp -P 2222 <user_name>@localhost:<VM_directory_file><local_directory_file>
 > 명령어 확인
 >
 > https://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/FileSystemShell.html
+
+
+
+**admin 비밀번호**
+
+```
+$ ssh root@localhost -p 2222
+$ ambari-admin-password-reset
+```
+
+
+
