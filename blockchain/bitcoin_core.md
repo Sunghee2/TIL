@@ -4,7 +4,7 @@ bitcoin core 공부하면서 헷갈린 것들 다시 정리한 것
 
   
 
-####**nonce (블록 헤더에 포함)**
+#### nonce (블록 헤더에 포함)
 
 특정 해시값을 결과로 나오게 하는 입력값을 찾으려면 무작위로 입력값을 계속 바꿔가며 찾아내야 됨(단방향 함수). 그 입력값을 바꿀 수 있는 유일한 것이 nonce
 
@@ -26,7 +26,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
   
 
-#### **Merkle–Damgård construction(M-D)**
+#### Merkle–Damgård construction(M-D)
 
 : 한 개의 메시지를 해싱할 때 메시지를 같은 크기의 여러 블록으로 나눔 -> 그 블록을 하나의 압축함수(compress)를 이용하여 내부 상태와 함께 섞음 -> 내부 상태의 마지막 값(final hash) = 메시지의 해시 값 
 
@@ -36,7 +36,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
   
 
-#### **length-extension attack**
+#### length-extension attack
 
 한 메시지(M)의 해시 값(final hash = Hash(M))을 알면, 임의의 블록(Block3)에 대한 Hash(M || Block3) 도 알 수 있음 (해싱된 메시지에 Block3을 붙일 수 있기 때문)
 
@@ -44,7 +44,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
   
 
-#### **머클트리(Merkle Tree)**
+#### 머클트리(Merkle Tree)
 
 여러 개의 거래를 하나의 루트로 만듦. 두 거래를 묶은 다음 SHA256 알고리즘을 통해 해시값으로 나타내고 그렇게 묶은 값을 또 두 개씩 묶어 해싱 -> 수 백개의 거래 값들을 하나의 데이터로 만들어 줌.
 
@@ -58,7 +58,7 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
   
 
-#### **Public Key, Private Key, Address**
+#### Public Key, Private Key, Address
 
 public key : 코인 전송 받을 때 사용
 
