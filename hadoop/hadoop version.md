@@ -54,7 +54,7 @@
      
      Secondary Name Node는 이 문제를 해결하기 위해 fsimage를 갱신한다. 이러한 작업을 '체크포인트'라고 말한다.  Secondary Name Node는 네임노드의 백업이 아니고 단순히 fsimage를 줄여주는 역할만 한다. fsimage가 너무 커서 Name Node가 메모리에 로딩되지 못하는 경우를 예방하기 위해 사용되는 것이다. 
      
-     edits는 최초 재시작 할 때만 empty상태가 됨. 운영 중 상태에서는 edits가 변경 사항을 저장하면서 무한정 커지게 된다. Secondary Name Node은 정기적으로 병합을 수행한다. 병합이 완료되면 edits.new는 비워지고, 변경된 최신 메타정보를 만들 수 있는데 이를 메인 네임노드와 동기화하는 것이다. 
+     edits는 최초 재시작 할 때만 empty상태가 된다. 운영 중 상태에서는 edits가 변경 사항을 저장하면서 무한정 커지게 된다. Secondary Name Node은 정기적으로 병합을 수행한다. 병합이 완료되면 edits.new는 비워지고, 변경된 최신 메타정보를 만들 수 있는데 이를 메인 네임노드와 동기화하는 것이다. 
 
 - **MapReduce**
 
@@ -62,7 +62,7 @@
 
      MapReduce Task는 Map과 Reduce 총 두 단계로 구성된다. 여기서 Map은 임의 키-값 쌍을 읽어서 이를 필터링하거나 다른 값으로 변환하는 작업을 담당한다. 예를 들어 만들어진 샌드위치를 분해하는 것을 말한다. Reduce()는 Map()을 통해 출력된 값을 그룹화 하고, 그룹화한 값을 집계하는 역할을 한다. 예를 들어 분해한 샌드위치에서 각 재료를 key값으로 정렬 및 value를 추출하는 것을 말한다. 
 
-     hadoop1.0에서는 큰 데이터가 들어왔을 때 64MB단위 블럭으로 분할하고 Map을 통해 각 블럭에 대한 연산을 수행한다. 그리고 Shuffle이라는 과정을 통해 같은 key값끼리는 같은 Reduce()가 호출되도록 한다(그래서 reduce가 list를 받음). 이 후 각각의 블럭의 결과 정보를 합치는 Reduce()가 수행되고 이 결과들은 HDFS에 저장된다. 
+     hadoop1.0에서는 큰 데이터가 들어왔을 때 64MB단위 블럭으로 분할하고 Map을 통해 각 블럭에 대한 연산을 수행한다. 그리고 Shuffle이라는 과정을 통해 같은 key값끼리는 같은 Reduce()가 호출되도록 한다(그래서 reduce가 list를 받는다). 이 후 각각의 블럭의 결과 정보를 합치는 Reduce()가 수행되고 이 결과들은 HDFS에 저장된다. 
 
      MapReduce를 통해 클러스터 별로 데이터를 프로세싱한다는 것은 데이터의 이동을 최소화 하는 의미가 있다. 프로세싱을 통해 최소한의 데이터만 추려서(reduce) 전달되기 때문에 모든 데이터를 한 곳에서 처리하기 위해 모두 옮겨야 했던 기존 방식에 비해 매우 효율적이다. 그러나 하나의 노드에서 실행될 수 있는 MapReduce의 작업의 개수가 제한되었다.                  MapReduce를 실행할 때는 슬롯 단위로 map/reduce task 개수를 관리했다. 따라서 mapper와 reduce를 따로 설정하다 보니 mapper는 모두 작동 중인데 reducer는 쉬고 있거나 이와 반대의 경우로 인해 클러스터의 전체 사용률이 낮았다. 이 때문에 클러스터 내 자원의 비효율적 사용이라는 문제점이 초래되었다. 하나의 노드에서 작업을 환료해도 아직 처리되지 않은 노드의 작업을 나눠가질 수 없는 구조이다. 
 
@@ -72,7 +72,7 @@
 
      ![관련 이미지](https://t1.daumcdn.net/cfile/tistory/1762633B4F571A051B)
 
-     Job Tracker는 Job 스케쥴링(task와 Task Tracker를 연결)과 task 진행 모니터링(task를 추적하고, 실패하거나 느린 task를 다시 시작하고, 전체 카운터를 유지하는 방법으로 task 장부를 기록한다)를 맡고 있다. 따라서 하나의 노드인 Job Tracker는 Task Tracker 수천 개와 MapReduce Task를 처리 하며 리소스와 Job을 모두 관리한다는 의미이다. 이는 확장성과 관련된 선택권을 줄이며, 클러스터가 하나의 앱만 실행한다는 것을 알 수 있고  Job Tracker에서 지연이 생기면 모든 클러스터 노드가 지연될 것임을 뜻한다. 실제로 4천 대 이상의 클러스터나 4만개 이상의 task를 동시에 실행하지 못하는 hadoop 1.0의 문제점 중 하나인 병목현상이 생긴다. 
+     Job Tracker는 Job 스케쥴링(task와 Task Tracker를 연결)과 task 진행 모니터링(task를 추적하고, 실패하거나 느린 task를 다시 시작하고, 전체 카운터를 유지하는 방법으로 task 장부를 기록한다)를 맡고 있다. 따라서 하나의 노드인 Job Tracker는 Task Tracker 수천 개와 MapReduce Task를 처리 하며 리소스와 Job을 모두 관리한다. 이는 확장성과 관련된 선택권을 줄이며, 클러스터가 하나의 앱만 실행한다는 것을 알 수 있고  Job Tracker에서 지연이 생기면 모든 클러스터 노드가 지연될 것임을 뜻한다. 실제로 4천 대 이상의 클러스터나 4만개 이상의 task를 동시에 실행하지 못하는 hadoop 1.0의 문제점 중 하나인 병목현상이 생긴다. 
 
      2) **Task Tracker**
      
@@ -153,7 +153,9 @@ hadoop 2.0에서는 1.0의 문제점을 해결할 YARN 아키텍처가 등장하
 
       Container는 CPU, 디스크(Disk), 메모리(Memory) 등과 같은 속성으로 정의되며 실제 앱을 실행하고 상태값을 Application Master에 알린다. 이 속성은 그래프 처리(Graph processing)와 MPI와 같은 여러 응용 프로그램을 지원하는데 도움이 된다. 모든 작업(job)은 결국 여러 개의 테스크로 세분화되며, 각 테스크는 하나의 Container 안에서 실행이 된다. 필요한 자원의 요청은 Application Master가 담당하며, 승인 여부는 Resource Manager가 담당한다. Container 안에서 실행할 수 있는 프로그램은 자바 프로그램뿐만 아니라, 커맨드 라인에서 실행할 수 있는 프로그램이면 모두 가능하다.
 
-     yarn의 설정방법에 따라 다르지만, Container는 Unix 프로세스 또는 리눅스 cgroup이 된다. 
+       yarn의 설정방법에 따라 다르지만, Container는 Unix 프로세스 또는 리눅스 cgroup이 된다.
+
+ 
 
 > MapReduce와 YARN 컴포넌트 비교
 >
