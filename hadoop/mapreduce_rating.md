@@ -140,9 +140,6 @@ class Rating(MRJob):
                         if sum_counts >= 100:
                                 yield "%03.2f"%round(sum_ratings/(sum_counts*1.0),2), dict_title[k] 
                                 
-                                ## 
-%08.6f_%08f"%(r_mean, r_cnt), title
-                                
         def reduce_sort_rating(self, rating, title):
                 for t in title:
                         yield t, float(rating)
