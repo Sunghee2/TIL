@@ -39,7 +39,7 @@ DUMP result;
 
 ### Homework 1
 
-```
+```pi
 ratings = LOAD '/user/maria_dev/ml-latest/ratings.csv' 
 			USING org.apache.pig.piggybank.storage.CSVExcelStorage(',',
             	'NO_MULTILINE','NOCHANGE','SKIP_INPUT_HEADER')
@@ -90,7 +90,7 @@ DUMP final;
 
 ### Homework 2
 
-```
+```pig
 ratings = LOAD '/user/maria_dev/ml-latest-small/ratings.csv' 
 			USING org.apache.pig.piggybank.storage.CSVExcelStorage(',',
             	'NO_MULTILINE','NOCHANGE','SKIP_INPUT_HEADER')
