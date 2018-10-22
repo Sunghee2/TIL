@@ -62,6 +62,28 @@ LIMIT 10;
 
 :memo: `CREATE EXTERNAL TABLE` : Hive에서 새 external table을 만듦. external table은 테이블 정의만 Hive에 저장되고 데이터는 원래 위치에 그대로 유지됨.
 
+### Example 3
+
+```hive
+DROP TABLE movies3;
+
+CREATE TABLE movies3 (movieid INT, title STRING)
+PARTITIONED BY (genre STRING)
+STORED AS ORC;
+
+SET hive.exec.dynamic.partition = true;
+SET hive.exec.dynamic.partition.mode = nonstrict;
+
+INSERT OVERWRITE TABLE movies3 PARTITION (genre)
+SELECT movieid, title, genre
+FROM movies
+LATERAL VIEW explode(split(genres, '\\|')) explodeVal as genre;
+```
+
+![](./screenshot/hive_example3.png)
+
+:memo: movies3의 스키마는 movieid, title로만 구성되어 있음(genre X)	
+
 
 
 ### Homework 1
