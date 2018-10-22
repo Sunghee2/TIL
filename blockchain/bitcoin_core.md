@@ -1,8 +1,10 @@
 # Bitcoin Core
 
-bitcoin core 공부하면서 헷갈린 것들 다시 정리한 것  
+bitcoin core 공부하면서 헷갈린 것들 다시 정리한 것 
 
-  
+<br/>
+
+<br/>
 
 #### nonce (블록 헤더에 포함)
 
@@ -24,7 +26,9 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 비트코인에서 사용하는 문제는 위와 같이 몇 개 이상의 0으로 시작하는 해시값을 찾으라는 것(hash값이 bits로 지정된 난이도값보다 작게 생성될 때 해당 블록 생성 성공 = 채굴). 원래는 임의의 문자열이 아닌 블록체인에 추가된 가장 최신 블록의 헤더가 해시의 대상이 됨.   
 
-  
+<br/>
+
+<br/>
 
 #### Merkle–Damgård construction(M-D)
 
@@ -34,7 +38,9 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 > 사진 : 위키피디아  
 
-  
+<br/>
+
+<br/>
 
 #### length-extension attack
 
@@ -42,7 +48,9 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 => double hash 연산 사용(해시 함수 2개로 구성)  
 
-  
+<br/>
+
+<br/>
 
 #### 머클트리(Merkle Tree)
 
@@ -54,11 +62,15 @@ SHA-256 ("hello world" + " 6") = 6a9b5a89258b50744dfdf62e49ac6d869e8916e04ce57d9
 
 거래량이 기하급수적으로 늘어나도 특정 거래를 찾는 경로는 단순해짐. log2(N)
 
--> 특정 거래가 블록 내부에 포함되는지 여부를 검증하는데 효과적  
+-> 특정 거래가 블록 내부에 포함되는지 여부를 검증하는데 효과적 
 
-  
+<br/>
+
+<br/>
 
 #### Public Key, Private Key, Address
+
+거래가 진짜라는 것을 증명하는 데 사용! (디지털 서명)
 
 public key : 코인 전송 받을 때 사용
 
@@ -80,7 +92,9 @@ Address : RIPEMD160(SHA256(public key)) -> Base58Check Encoding
 
 > 사진 : http://ihpark92.tistory.com/6?category=746286  
 
-  
+<br/>
+
+<br/>
 
 #### UTXO(Unspent Transaction Output)
 
@@ -108,7 +122,9 @@ ex) A가 10BTC, 5BTC짜리 UTXO를 보유하고 있고 B에게 12BTC를 보려�
 >
 > CTxOut scriptPubKey - B의 public key
 
+<br/>
 
+<br/>
 
 #### 비결정적 지갑(Non-Deterministic Wallet)
 
@@ -116,7 +132,7 @@ ex) A가 10BTC, 5BTC짜리 UTXO를 보유하고 있고 B에게 12BTC를 보려�
 
 주기적으로 모든 키를 백업하지 않으면 손실 일어날 수 있음 => 결정적 지갑
 
-
+<br/>
 
 #### 결정적 지갑(Deterministic Wallet)
 
@@ -126,13 +142,13 @@ Common Seed에서 단방향 Hash함수를 통해 private key를 연속적으로 
 
 Seed만 알고 있으면 키를 전부 복원할 수 있음 (hash는 입력값이 같으면 동일한 출력값이므로 common seed만 알면모든 키 복원 가능)
 
-
+<br/>
 
 Common Seed생성 위해 연상기호 코드 워드(Mnemonic Code Words) 사용
 
 연상기호코드 : 임의의 영어 단어열 ex) "apple house soccer.." -> 이 단어를 PBKDF2를 사용하여 512비트의 common seed 생성
 
-
+<br/>
 
 #### 계층결정적 지갑(HD Wallet)
 
@@ -146,7 +162,163 @@ child private key : private key + chain code
 
 child public key : public key + chain code (private key없이 public key로부터 child public key 생성)
 
+<br/>
 
+<br/>
+
+#### 거래(transaction)
+
+**거래의 구조**
+
+|   크기   |     필드     |                             설명                             |
+| :------: | :----------: | :----------------------------------------------------------: |
+|  4 Byte  |   Version    |                        프로토콜 버전                         |
+| 1~9 Byte | Input Count  |         입력값의 개수(입력에 몇 개의 UTXO가 오는지)          |
+| Variable |    Input     | 하나 이상의 입력값<br />(이전 Tx에서 소비되지 않은 출력값 UTXO) |
+| 1~9 Byte | Output Count |                        출력값의 개수                         |
+| Variable |    Output    |                      하나 이상의 출력값                      |
+|  4 Byte  |   Locktime   |                블록에 추가되는 가장 빠른 시간                |
+
+> coinbase transaction은 새로운 UTXO를 생성하므로 입력값 없음
+
+<br/>
+
+**Input의 구조**
+
+|   크기   |            필드             |                       설명                        |
+| :------: | :-------------------------: | :-----------------------------------------------: |
+| 32 Byte  |      Transaction Hash       |   소비될 UTXO를 담고 있는 거래에 대한 ID (TxID)   |
+|  4 Byte  |         Ouput Index         |       소비될 UTXO의 인덱스 번호(0부터 시작)       |
+| 1~9 Byte |   Unlocking Script Length   |                해제 스크립트 길이                 |
+| Variable | Unlocking Script(ScriptSig) |        UTXO의 소비조건을 충족하는 스크립트        |
+|  4 Byte  |       Sequence Number       | 현재 장애가 있는 Tx- 대체 기능, 0xFFFFFFFF로 설정 |
+
+<br/>
+
+**Output의 구조**
+
+|   크기   |             필드              |                         설명                         |
+| :------: | :---------------------------: | :--------------------------------------------------: |
+|  8 Byte  |             value             |                사토시 단위의 거래금액                |
+| 1~9 Byte |     Locking Script Length     |                  잠금 스크립트 길이                  |
+| Variable | Locking Script (ScriptPubKey) | 출력값을 소비하는 데 필요한 조건을 규정하는 스크립트 |
+
+<br/>
+
+```json
+{
+   "lock_time":0,
+   "ver":1,
+   "size":223,
+   "inputs":[
+      {
+         "sequence":4294967295,
+         "witness":"",
+         "prev_out":{
+            "spent":true,
+            "tx_index":16996974,
+            "type":0,
+            "addr":"12uNPakqCNVsEgt4D7rwjjE9ybtL9DhaFY",
+            "value":6000000000,
+            "n":0,
+            "script":"76a91414df9c5851aa41f0cda83fda0bf3ce2bccf6f1ed88ac"
+             // scriptPubKey(잠금 스크립트)
+         },
+         "script":"4730440220394e03eb5b73e8813d14f16780f696fac5f4d34bd0414fade8c8422cf6f293be02204dea334228bbc1fccd9e52e99b7dc749020fe55425b9156e94e3e3e628d58eba014104329f73fce53c4b70065d60b914c6b3511fc4201cfc25a84240a5e10b92bc96f5f9d2ab2c30b0c07ac16c76f92eae4fa3b1648dba168b76b06f228b8fee1aea33"  
+          // scriptSig(해제 스크립트)
+      }
+   ],
+   "weight":892,
+   "time":1388185039,
+   "tx_index":41376054,
+   "vin_sz":1,
+   "hash":"b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
+   "vout_sz":1,
+   "relayed_by":"94.23.6.26",
+   "out":[
+      {
+         "spent":true,
+         "tx_index":41376054,
+         "type":0,
+         "addr":"16Wq77L8NHd2UUarYygjJmahuZWkM8ZNoW",
+         "value":6000000000,
+         "n":0,
+         "script":"76a9143c7cd91e41818d9a77b743082a042fc6ee9fdf3e88ac"
+          // scriptPubKey(잠금 스크립트)
+      }
+   ]
+},
+```
+
+`12uNPakqCNVsEgt4D7rwjjE9ybtL9DhaFY` 주소에서 `16Wq77L8NHd2UUarYygjJmahuZWkM8ZNoW` 주소로 60 BTC 전달하였고 `16Wq77L8NHd2UUarYygjJmahuZWkM8ZNoW` 주소는 60 BTC 모두 수령함. 
+
+<br/>
+
+<br/>
+
+#### 거래 스크립트
+
+거래의 유효성을 확인하기 위한 스크립트
+
+##### 잠금 스크립트(scriptPubKey) 생성
+
+ `DUP HASH160 <PubKHash> EQUALVERIFY CHECKSIG`
+
+```java
+scriptPubKey =
+	  76 // DUP
+    + a9 // HASH160
+    + length(decodeBase58decode(address)) // publicKeyHash 길이
+    + Base58decode(address) // publicKeyHash(디코딩된 hex값에서 prefix, checksum을 제외한 순수 publicKeyHash값)
+    + 88 // EQUALVERIFY
+    + ac // CHECKSIG
+```
+
+> 비트코인 OPCODE값 여기서 알 수 있음(Hex값으로 변환) => https://en.bitcoin.it/wiki/Script
+
+<br/>
+
+##### 해제 스크립트(scriptSig) 생성
+
+이해가 되지 않는다ㅠ흑
+
+
+
+- 스택을 사용하여 계산
+
+  ![스크립트6.jpg](https://steemitimages.com/0x0/https://steemitimages.com/DQmNfUogTYnbbCzryoeCyaQayAkwjuYZ25Ro5GgeZuvb5kc/%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B86.jpg)
+
+![스크립트7.jpg](https://steemitimages.com/DQmcJfHFxqzxvUqXi8fKc2ATVwYZPGxsDNJgU2xuKD7TBfQ/%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B87.jpg)
+
+> 사진 : https://steemit.com/kr/@easyblockchain/5y38ab
+
+"2+3==5"를 스크립트로 작성 ->  `2 5 ADD 5 EQUAL`
+
+마지막에 TRUE가 남아있으면 해당 스크립트는 유효한 것이라고 판단함.
+
+- P2PKH(Pay-to-public-key-hash)
+
+  Unlocking Script(scriptSig) : `<sig> <pubK>`
+  Locking Script(scriptPubKey) : `DUP HASH160 <PubKHash> EQUALVERIFY CHECKSIG`
+
+  > `<sig>` : 해당 계좌의 소유주가 private key로 암호화한 값
+  > `<pubK>` : `<sig>`를 복호화할 public key 
+  >
+  > `DUP`(76) : Duplicate(복사)
+  > `HASH160`(a9) : 160-bit Hash 값 연산
+  > `EQUALVERIFY`(88) : stack에 들어 있는 2개의 값이 동일한지 검증
+  > `CHECKSIG`(ac) : 서명 검증
+  > *()는 약속된 hex값*
+
+  ![img](https://cdn-images-1.medium.com/max/1600/1*R_VTV84uVUOLqbD9o-leKA.png)
+
+  ![img](https://cdn-images-1.medium.com/max/1600/1*2GjiKp9BifSA3_RTSciNMQ.png)
+
+  > 사진 : https://medium.com/@ismailakkila/my-notes-on-bitcoin-transactions-part-2-c9d39d5ae326
+
+<br/>
+
+<br/>
 
 > 출처
 >
@@ -165,3 +337,5 @@ child public key : public key + chain code (private key없이 public key로부�
 > http://decenter.sedaily.com/NewsView/1RZJK9SEOA
 >
 > http://joojis.tistory.com/entry/비트코인-주소에-대한-이해-1-UTXO-모델
+>
+> https://steemit.com/kr/@niipoong/scriptsig-scriptpubkey
