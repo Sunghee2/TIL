@@ -39,7 +39,7 @@ DUMP result;
 
 ### Homework 1
 
-```pi
+```pig
 ratings = LOAD '/user/maria_dev/ml-latest/ratings.csv' 
 			USING org.apache.pig.piggybank.storage.CSVExcelStorage(',',
             	'NO_MULTILINE','NOCHANGE','SKIP_INPUT_HEADER')
