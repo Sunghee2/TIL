@@ -42,6 +42,34 @@
 
 
 
+#### Casper
+
+체크포인트 높이가 100의 배수인 블록
+
+ㅇㅖ치금 검증자가 검증에 참가하기 위해 캐스퍼 스마트 컨트랙트에 예치하는 금액(1500 이더)
+
+supermajority link 적어도 2/3의 검증인이 소스 ㅁ에서 타켓 B로 투표한 경우 체크포인트 A, B의 연결. A=> B로 표현
+
+justified: 제네시스블록이거나 justified된 C체크포인트에서 C->C'인 supermajarity link가 존재할 때 체크포인트 C'는 justified됨
+
+finalized 체크포인트 C가 justified되었고, C의 직계자손(높이차가 1)인 C'에서 supermajority link C->C'가 존재할 때, 체크포인트 C는 finalized됨.
+
+conflict 두 개의 체크포인트가 서로 다른 branch에 존재하는 경우
+
+
+
+캐스퍼 투표의 동작 과정
+
+1. 체크포인트에 검증인들이 투표
+2. 제출된 투표가 블록에 포함(이 블록은 채굴이 된 것임)
+3. 체크포인트가 3/4의 투표를 받음
+   - 새로운 체크포인트에 supermajarity link가 생기고 justified됨
+4. 다시 체크포인트 도달시 검증인들이 투표
+5. 새로운 체크포인트가 3/4의 투표받음
+   - 2/3을 넘겼으므로 justified
+
+6. 두 체크포인트가 supermajority link로 연결되고 이전 체크포인트는 finalize됨.
+
 <br/>
 
 > 출처
