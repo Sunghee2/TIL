@@ -188,15 +188,3 @@ ORDER BY count_rating DESC LIMIT 1;
 4)  `LATERAL VIEW`를 사용하여 movies의 각 행에 UDT함수(`explode(split(genres, '\\|'))`) 를 적용하여 가상 테이블을 만들게 된다. 이를 통해 genres column를 |로 구분한 것을 explode를 사용하여 각 genre마다 movieId를 가진 tuple이 생기게 된다. 이 테이블과 ratings를 join하여 genre 기준으로 group by하고 평가 횟수를 기준으로 내림차순 정렬한다. 그리고 가장 위에 있는 한 tuple만 뽑아 장르, 평가 횟수, 평균 평점(반올림)을 select한다.
 
 ![](./screenshot/hive_homework2.png)
-
-
-
-> hive 안됨
->
-> `HiveConf of name hive.log.file does not exist`
->
-> `HiveConf of name hive.log.dir does not exist`	
->
-> 버전 충돌이었음! 
->
-> https://supportmatrix.hortonworks.com
