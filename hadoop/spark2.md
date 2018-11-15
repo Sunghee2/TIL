@@ -173,6 +173,8 @@ SQL 결과의 row마다 장르, 평가 횟수, 평균 평점를 출력한다.
 
 ![](./screenshot/spark4.png)
 
-:memo: column splitㅎㅏ려면 column name``로 
-
-split 문자가 안먹을 때 \ 계속 더해보기...
+>​ :memo: 
+>
+>column split 하려면 column name``로 
+>
+>split 문자가 안먹을 때 \ 계속 더해보기...
