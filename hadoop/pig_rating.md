@@ -1,5 +1,7 @@
 # Pig
 
+**Note** : HDP 3 부터는 없어진다고 함 => ambari 2.7부터 pig view 사라짐.
+
 ### example 1
 
 1. 평균평점구하기
