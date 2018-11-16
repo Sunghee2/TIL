@@ -39,13 +39,13 @@
 
    `$ sqoop import --connect jdbc:mysql://localhost/employees --table employees -m 1 --username sqoop --password-file hdfs:///user/maria_dev/.password --target-dir data/employees`
 
-   ![](./screenshot/sqoop1.PNG)
+   ![](./screenshot/sqoop1.png)
 
    > Ambari의 File View에서 확인 가능
 
 5. **Hive에 table 추가**
 
-   ![](./screenshot/sqoop2.PNG)
+   ![](./screenshot/sqoop2.png)
 
 6. **Sqoop Import to Hive**
 
@@ -53,7 +53,7 @@
 
    `$ sqoop import --connect jdbc:mysql://localhost/employees --table employees -m 1 --username sqoop --password-file /user/maria_dev/.password --hive-import --hive-overwrite --target-dir /user/maria_dev/data/tmp_employees --hive-table employees --create-hive-table`
 
-   ![](./screenshot/sqoop3.PNG)
+   ![](./screenshot/sqoop3.png)
 
    <br/>
 
@@ -99,7 +99,7 @@
 
    `$ sqoop export --connect jdbc:mysql://localhost/movielens --table export_employees --username sqoop --password-file /user/maria_dev/.password --export-dir /apps/hive/warehouse/employees --input-fields-terminated-by '\0001' `
 
-   ![](./screenshot/sqoop4.PNG)
+   ![](./screenshot/sqoop4.png)
 
 > :bug:
 >
