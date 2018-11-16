@@ -31,8 +31,8 @@
 
 8. `$ spark-submit --packages datastax:spark-cassandra-connector:2.3.1-s_2.11CassandraSpark.py`
 
-   ```spark
-   rom pyspark.sql import SparkSession
+   ```python
+   from pyspark.sql import SparkSession
    from pyspark.sql import Row
    from pyspark.sql import functions
    
