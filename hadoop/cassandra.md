@@ -29,6 +29,8 @@
    cqlsh:movielens> DESC users;
    ```
 
+   ![](./screenshot/cassandra.png)
+
 8. `$ spark-submit --packages datastax:spark-cassandra-connector:2.3.1-s_2.11CassandraSpark.py`
 
    ```python
