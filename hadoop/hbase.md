@@ -47,11 +47,11 @@
        print(ratings.fetch("33"))
    ```
 
-   ![](./screenshot/hbase1.PNG)
+   ![](./screenshot/hbase1.png)
 
 5. HBase shell
 
-   ![](./screenshot/hbase2.PNG)
+   ![](./screenshot/hbase2.png)
 
 <br/>
 
