@@ -74,3 +74,6 @@
 
    ![](./screenshot/kafka2.png)
 
+<br/>
+
+> aws kinesis
