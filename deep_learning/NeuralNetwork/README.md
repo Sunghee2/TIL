@@ -20,7 +20,7 @@ plt.ylim(-0.1, 1.1)
 plt.show()
 ```
 
-![](./screenshot/sigmoid.png)
+![](../screenshot/sigmoid.png)
 
 <br/>
 
@@ -51,7 +51,7 @@ y = forward(network, np.array([1.0, 2.0]))
 print(y)
 ```
 
-![](./screenshot/fp1.png)
+![](../screenshot/fp1.png)
 
 <br/>
 
@@ -76,7 +76,7 @@ y = forward(network, np.array([1.0, 2.0]))
 print(y)
 ```
 
-![](./screenshot/fp2.png)
+![](../screenshot/fp2.png)
 
 <br/>
 
@@ -105,7 +105,7 @@ y = forward(network, np.array([1.0, 2.0]))
 print(y)
 ```
 
-![](./screenshot/fp3.png)
+![](../screenshot/fp3.png)
 
 <br/>
 
@@ -126,7 +126,7 @@ print(softmax(np.array([0, 0, 0, 10])))
 print(softmax(np.array([200, 1000, 100, 200])))
 ```
 
-![](./screenshot/sf1.png)
+![](../screenshot/sf1.png)
 
 > 값이 너무 커져 overflow 되어서 nan이 나오게 됨.
 
@@ -148,7 +148,7 @@ print(softmax(np.array([0, 0, 0, 10])))
 print(softmax(np.array([200, 1000, 100, 200])))
 ```
 
-![](./screenshot/sf2.png)
+![](../screenshot/sf2.png)
 
 <br/>
 
@@ -245,7 +245,7 @@ print()
 plt.show()
 ```
 
-![](./screenshot/mnist01.png)
+![](../screenshot/mnist01.png)
 
 <br/>
 
@@ -289,7 +289,7 @@ network = init_network()
 print(accuracy(network, x_train, y_train))
 ```
 
-![](./screenshot/mnist02.png)
+![](../screenshot/mnist02.png)
 
 <br/>
 
@@ -319,7 +319,7 @@ print(mean_squared_error(y1, t), mean_squared_error(y2, t))
 print(cross_entropy_error(y1, t), cross_entropy_error(y2, t))
 ```
 
-![](./screenshot/lf.png)
+![](../screenshot/lf.png)
 
 > Loss functions
 >
