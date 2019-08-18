@@ -1,0 +1,66 @@
+=============== Jul 29, 2019 (KST) ===============
+12:23:54.767457 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:23:54.780973 db@open opening
+12:23:54.785889 version@stat F·[] S·0B[] Sc·[]
+12:23:54.792902 db@janitor F·2 G·0
+12:23:54.793494 db@open done T·11.927469ms
+14:31:25.713074 memdb@flush N·47439 S·3MiB
+14:31:25.745525 memdb@flush created L0@3 N·47439 S·865KiB "loc..seq,v22":"version,v1"
+14:31:25.745660 version@stat F·[1] S·865KiB[865KiB] Sc·[0.25]
+14:31:25.753468 memdb@flush committed F·1 T·40.317171ms
+14:31:25.756456 journal@remove removed @1
+15:30:52.090484 memdb@flush N·46681 S·3MiB
+15:30:52.120055 memdb@flush created L0@5 N·46681 S·735KiB "n:\x00..ail,v80334":"n:\xff..ong,v84717"
+15:30:52.120584 version@stat F·[2] S·1MiB[1MiB] Sc·[0.50]
+15:30:52.126898 memdb@flush committed F·1 T·36.358381ms
+15:30:52.128861 journal@remove removed @2
+15:31:11.020580 table@compaction L0·2 -> L1·0 S·1MiB Q·94247
+15:31:11.060142 table@build created L1@6 N·23932 S·833KiB "loc..seq,v22":"version,v1"
+15:31:11.060693 version@stat F·[0 1] S·833KiB[0B 833KiB] Sc·[0.00 0.01]
+15:31:11.067147 table@compaction committed F-1 S-766KiB Ke·0 D·70188 T·46.493883ms
+15:31:11.068431 table@remove removed @5
+15:31:11.068805 table@remove removed @3
+16:30:52.130658 memdb@flush N·46625 S·3MiB
+16:30:52.160948 memdb@flush created L0@8 N·46625 S·710KiB "n:\x00..ing,v113369":"n:\xff..ong,v101680"
+16:30:52.161620 version@stat F·[1 1] S·1MiB[710KiB 833KiB] Sc·[0.25 0.01]
+16:30:52.168758 memdb@flush committed F·1 T·38.041342ms
+16:30:52.170723 journal@remove removed @4
+16:31:09.114430 table@compaction L0·1 -> L1·1 S·1MiB Q·140875
+16:31:09.155334 table@build created L1@9 N·30614 S·1MiB "loc..seq,v22":"version,v1"
+16:31:09.156247 version@stat F·[0 1] S·1MiB[0B 1MiB] Sc·[0.00 0.01]
+16:31:09.163403 table@compaction committed F-1 S-484KiB Ke·0 D·39943 T·48.894765ms
+16:31:09.164563 table@remove removed @8
+16:31:09.164944 table@remove removed @6
+17:31:48.750994 memdb@flush N·46566 S·3MiB
+17:31:48.779956 memdb@flush created L0@11 N·46566 S·697KiB "n:\x00..:v4,v187226":"n:\xff..ail,v172407"
+17:31:48.780704 version@stat F·[1 1] S·1MiB[697KiB 1MiB] Sc·[0.25 0.01]
+17:31:48.793252 memdb@flush committed F·1 T·42.177338ms
+17:31:48.795222 journal@remove removed @7
+17:32:08.339263 table@compaction L0·1 -> L1·1 S·1MiB Q·187652
+17:32:08.381324 table@build created L1@12 N·36224 S·1MiB "loc..seq,v22":"version,v1"
+17:32:08.381994 version@stat F·[0 1] S·1MiB[0B 1MiB] Sc·[0.00 0.01]
+17:32:08.387985 table@compaction committed F-1 S-507KiB Ke·0 D·40956 T·48.622384ms
+17:32:08.388936 table@remove removed @11
+17:32:08.389233 table@remove removed @9
+19:44:54.427828 memdb@flush N·47724 S·3MiB
+19:44:54.457844 memdb@flush created L0@14 N·47724 S·674KiB "n:\x00..ail,v234632":"n:\xff..ail,v203023"
+19:44:54.458669 version@stat F·[1 1] S·1MiB[674KiB 1MiB] Sc·[0.25 0.01]
+19:44:54.471549 memdb@flush committed F·1 T·43.625005ms
+19:44:54.473369 journal@remove removed @10
+19:45:10.098748 table@compaction L0·1 -> L1·1 S·1MiB Q·235375
+19:45:10.144218 table@build created L1@15 N·40972 S·1MiB "loc..seq,v22":"version,v1"
+19:45:10.145217 version@stat F·[0 1] S·1MiB[0B 1MiB] Sc·[0.00 0.01]
+19:45:10.151711 table@compaction committed F-1 S-515KiB Ke·0 D·42976 T·52.863223ms
+19:45:10.152786 table@remove removed @14
+19:45:10.153099 table@remove removed @12
+21:17:25.452943 memdb@flush N·46948 S·3MiB
+21:17:25.486985 memdb@flush created L0@17 N·46948 S·680KiB "n:\x00..ing,v274256":"n:\xff..ong,v250741"
+21:17:25.487050 version@stat F·[1 1] S·2MiB[680KiB 1MiB] Sc·[0.25 0.01]
+21:17:25.500133 memdb@flush committed F·1 T·47.109566ms
+21:17:25.504090 journal@remove removed @13
+21:17:45.147540 table@compaction L0·1 -> L1·1 S·2MiB Q·282334
+21:17:45.200026 table@build created L1@18 N·44834 S·1MiB "loc..seq,v22":"version,v1"
+21:17:45.200635 version@stat F·[0 1] S·1MiB[0B 1MiB] Sc·[0.00 0.02]
+21:17:45.209356 table@compaction committed F-1 S-551KiB Ke·0 D·43086 T·61.739316ms
+21:17:45.210672 table@remove removed @17
+21:17:45.211047 table@remove removed @15

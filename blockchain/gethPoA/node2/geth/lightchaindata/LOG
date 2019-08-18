@@ -1,0 +1,8 @@
+=============== Jul 29, 2019 (KST) ===============
+12:18:01.889382 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:18:01.902594 db@open opening
+12:18:01.904043 version@stat F·[] S·0B[] Sc·[]
+12:18:01.910928 db@janitor F·2 G·0
+12:18:01.911556 db@open done T·8.890521ms
+12:18:01.913205 db@close closing
+12:18:01.913523 db@close done T·315.278µs
