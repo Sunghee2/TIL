@@ -1,0 +1,118 @@
+pragma solidity 0.5.1;
+
+// contract EventTicketsV1 {
+//     address payable owner = msg.sender;    //티켓 판매자 == 컨트랙트 owner
+//     uint   PRICE_TICKET = 1 ether;     //티켓 가격
+
+//     struct Event {
+//         string description;    //설명
+//         string website;        //홈페이지 url
+//         uint tickets;          //총 발행된 티켓 수
+//         uint sales;           // 총 판매된 티켓 수
+//         mapping(address => uint) ticketNum; //address 별 구매 수량
+//         bool openSales;    //티켓 판매중 여부.
+//     }
+    
+//     Event myEvent;
+
+ 
+
+//     //이벤트 정보는 컨트랙트 생성 시점에서 초기화 됩니다.
+
+//     constructor(string memory _desc, string memory _web, uint _tickets)public {
+
+//         myEvent.description = _desc;
+
+//         myEvent.website = _web;
+
+//         myEvent.tickets = _tickets;
+
+//         myEvent.openSales = true;
+
+ 
+
+//     }
+
+ 
+
+//     function readEvent() {
+
+//           //TO-DO
+
+//           //1. 컨트랙트에 등록된 이벤트 정보를 조회 할 수 있다. 이때 구매한 사용자 정보(buyer) 는 보여주지 않아도 된다.   
+
+//     }
+
+ 
+
+//     function buyTickets(uint _numTickets) public payable {
+
+ 
+
+//         //TO-DO
+
+//         //1. 티켓을 구매하기 전에 확인해야 할 내용이 있을 것입니다. (1. 판매중인지, 2. 금액 확인, 3. 티켓 잔여수량이 충분한지.)
+
+//         // ex) 1.판매중인지 여부
+
+//         require(myEvent.openSales == true);
+
+//         //<주의사항>
+
+//         // 맨 아래쪽에 남은 잔돈을 환불하는 로직이 있습니다. 이 기능이 활용되게끔 조건을 추가 해 주세요.
+
+ 
+
+ 
+
+//         //2. 1의 조건을 충족했을 경우 구매절차와 관련된 정보를 업데이트 해 주어야 합니다. (Event 객체에 buyer 와 sales 가 있습니다.)
+
+//         //<주의사항>
+
+//         //한 사용자가 이 기능을 반복해서 호출 하는 경우를 고려 해 주세요. (여러번에 걸쳐 여러번 티켓을 사는경우.)
+
+ 
+
+ 
+
+//         uint paymentChange = msg.value - _numTickets * PRICE_TICKET;
+
+//         if (paymentChange > 0) {
+
+//             address(msg.sender).transfer(paymentChange);
+
+ 
+
+//         }
+
+//     }
+
+//     function getRefund() public {
+
+//       require(myEvent.buyers[msg.sender] > 0);
+
+ 
+
+//         //TO-DO
+
+//         //사용자가 구매한 모든 티켓값을 환불하는 로직을 작성 해 주시기 바랍니다.
+
+//         //<주의사항>
+
+//         //check-effect-interactions 패턴 순서
+
+ 
+
+//     }
+
+ 
+
+//     //TO-DO
+
+//     //1. modifier 추가. owner만 수행 가능 하도록 권한을 체크 해 줄 modifier를 작성하시기 바랍니다.
+
+//     //2. function 추가. 티켓 판매를 중단하고, 컨트랙트에 있는 금액을 오너에게 송금하는 함수를 작성 해 주시기 바랍니다.
+
+//     // 이때, 위에 작성하신 modifier 를 사용 해 주수기 바랍니다.
+
+// }
