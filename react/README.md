@@ -31,7 +31,7 @@ React
    
      > react-dom : react로 만들어진 dom과 가상 dom을 실제 dom에 렌더링할 수 있음. react 코드를 웹에 붙여주는 역할.
    
-     ```react
+     ```javascript
      <head>
        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
      	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -100,7 +100,7 @@ React
 
    - Hooks인 경우
 
-     ```react
+     ```javascript
      // componentDidMount, componentDidUpdate 역할을 하나로 합쳐 놓음
      // 렌더링 할 때마다, [] 내의 값이 바뀔 때 계속 다시 실행
      useEffect(() => { 
@@ -128,7 +128,7 @@ React
 
    - 차이
 
-     ```react
+     ```javascript
      componentDidMount() {
      	this.setState({
      		imgCoord: 3,
@@ -159,7 +159,7 @@ React
 
    **state** : 바뀌거나 바뀔 수 있는 부분
 
-   ```react
+   ```javascript
    constructor(props) {
      super(props);
      // state 초기화
@@ -182,7 +182,7 @@ React
    })
    ```
 
-   ```react
+   ```javascript
    // props : 하위 컴포넌트에 값을 전달함
    <Try value={v} index={i}>
    
@@ -201,7 +201,7 @@ React
 
    > 만약 props를 바꿔야할 때는 state로 넣어줌(원래 props는 자식에서 바꾸면 안 됨.)
    >
-   > ```react
+   > ```javascript
    > const Try = ({ tryInfo }) => {
    > 	const [result, setResult] = useState(tryInfo.result);
    >   
@@ -231,7 +231,7 @@ React
    >
    > * preset은 plugin의 모음임
 
-   ```react
+   ```javascript
    e('button', { onClick: () => { console.log('clicked')}, type: 'submit'}, 'Like')
    
    <button type="submit" onClick={() => { this.setState({ liked: true })}}>
@@ -244,7 +244,7 @@ React
    - 코드가 짧고 간결해짐
    - class가 아니라서 class method 못 씀
 
-   ```react
+   ```javascript
    class Gugudan extens React.Component {
      state = {
        first: 0,
@@ -277,7 +277,7 @@ React
 
      - useMemo : 복잡한 함수 결과값을 기억(useRef : 일반 값을 기억)
 
-       ```react
+       ```javascript
        // 맨 뒤의 [] 내의 값이 바뀔 때 useMemo 다시 실행됨
        // 원래는 useState(getWinNumbers)였는데 함수 자체가 렌더링때마다 재실행되어서 lottoNumbers로 기억해서 넣어놓음.
        const lottoNumbers = useMemo(() => getWinNumbers(), []);
@@ -294,7 +294,7 @@ React
      
        > reducer와 차이점은 reducer는 동기적으로 바뀌고 useReducer는 state가 비동기로 바뀜
      
-       ```react
+       ```javascript
        const initialState = {
          winner: '',
          turn: 0,
@@ -335,7 +335,7 @@ React
      
        - createContext
      
-         ```react
+         ```javascript
          // 다른 파일에서 쓸 수 있도록 export함
          export const TableContext = createContext({
          	tableData: [],
@@ -357,7 +357,7 @@ React
          }
          ```
      
-         ```react
+         ```javascript
          const Form = () => {
          
          }
@@ -367,7 +367,7 @@ React
 
    - BrowserRouter
 
-     ```react
+     ```javascript
      <BrowserRouter>
        // a tag로 바뀜(링크가 바뀜). a tag 못 쓰고 link로 써야됨.
        <Link to="/baseball">야구</Link>
@@ -391,7 +391,7 @@ React
      >
      > 새로고침에 뜨지 않음(/baseball을 url에 그냥 치면 cannot get /baseball 에러 나옴) => 서버 쪽에 등록해야함
      >
-     > ```react
+     > ```javascript
      > class GameMatcher extends Component {
      > }
      > ```
@@ -444,7 +444,7 @@ React
 
    - ref - dom에 직접 접근하고 싶을 때 ref를 붙여서 접근하면 됨.
 
-     ```react
+     ```javascript
      import { createRef } from 'react';
      
      inputRef = createRef();
@@ -452,14 +452,14 @@ React
      this.inputRef.current.focus();
      ```
 
-     ````react
+     ````javascript
      // hooks
      const interval = useRef();
      ````
 
    - 함수 렌더링
 
-     ```react
+     ```javascript
      // <> tag내에 함수를 직접 적으면 렌더링 할 때마다 그 함수 계속 새로 만듦.
      <form onSubmit={(e) => this.setState()}></form>
      
@@ -471,7 +471,7 @@ React
 
      webpack-dev-server : webpack.config.js를 읽어주고 nodemon 같은 역할
 
-     ```react
+     ```javascript
      // 이렇게 하면 WordRelay 변화를 감지해서 다시 실행시켜줌
      const { hot } = require('./WordRelay');
      
@@ -482,21 +482,21 @@ React
 
    - import / require
 
-     ```react
+     ```javascript
      export const hello = 'hello'; // import { hello }
      export default Number; // import Number
      ```
 
    - 화살표 함수 : 안 쓰면 this 사용 못함
 
-     ```react
+     ```javascript
      // bind(this)를 자동으로 해줌
      onChangeInput = () => {
      	console.log(this.state.value)
      }
      ```
 
-     ```react
+     ```javascript
      onChangeInput() {
      	console.log(this.state.value) // undefined 나옴
      }
@@ -515,7 +515,7 @@ React
 
    - 렌더링 최적화 : shouldComponentUpdate / PureComponent / memo
 
-     ```react
+     ```javascript
      class Test extends Component {
      	state = {
      		counter: 0,
@@ -547,7 +547,7 @@ React
 
    - setState
 
-     ```react
+     ```javascript
      // 렌더링 안 됨
      const array = this.state.array;
      array.push(1);
@@ -577,3 +577,9 @@ React
 
      - 처음에는 하나로 만든 뒤 쓸데없이 렌더링 되는 부분을 나눔
      - 쪼갤 수록 관리는 편하지만 부모-자식관계가 생겨서 힘듦
+     
+     
+ <hr/>
+ 
+ 읽어볼 것들
+ http://jeonghwan-kim.github.io/series/2019/12/10/frontend-dev-env-webpack-basic.html
