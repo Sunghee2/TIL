@@ -67,6 +67,36 @@ https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&pro
 >
 > `db.people.find(   { name: "John Doe", zipcode: { $gt: "63000" } } ).hint({ $natural: 1 })`
 
+- 인덱스 크기 확인
+
+  ```
+  db.students.totalIndexSize()
+  ```
+
+- 인덱스 최적화
+
+  - 파이프라인 첫 부분에 발생하는 match
+
+  - project, unwind, group이 앞에 오지 않는 sort
+
+  - sort + group(함수 first만 사용) = 둘의 field 동일 할 때 sort order에 맞는 index 생성
+
+    ```javascript
+    db.foo.aggregate([
+      {
+        $sort:{ x : 1, y : 1 }
+      },
+      {
+        $group: {
+          _id: { x : "$x" },
+          y: { $first : "$y" }
+        }
+      }
+    ])
+    ```
+
+  - geoNear 사용할 때? 이건 안 쓸 것 같아서 자세히 적진 X -> 나중에 document에서 확인하길(https://docs.mongodb.com/manual/core/aggregation-pipeline/#aggregation-pipeline-operators-and-performance)
+
 ## 샤딩
 
 https://www.youtube.com/watch?v=_SVS4qn8HuY&list=PL9mhQYIlKEheyXIEL8RQts4zV_uMwdWFj&index=10&t=0s
@@ -108,3 +138,44 @@ https://www.youtube.com/watch?v=_SVS4qn8HuY&list=PL9mhQYIlKEheyXIEL8RQts4zV_uMwd
 ## OLAP 구현
 
 http://slidegur.com/doc/3402173/슬라이드-1
+
+
+
+https://m.blog.naver.com/PostView.nhn?blogId=humongousdb&logNo=220090948183&targetKeyword=&targetRecommendationCode=1
+
+### Aggregate
+
+- aggregate pipeline은 RAM 100메가의 제약사항을 가지고 있음
+
+  - `allowDiskUse` option을 사용하면 disk에 swap파일을 생성하여 연산 => 속도 느려짐
+
+- 최적화
+
+  - https://docs.mongodb.com/manual/core/aggregation-pipeline-optimization/
+  - https://docs.mongodb.com/manual/reference/operator/aggregation/group/#group-pipeline-optimization
+  - 나중에 정리^^;;;
+  - 특정 집합을 취할 때 보다 많이 걸러내기!
+
+  1. Projection
+
+     - sort + match => 당연히 match 먼저 와서 걸러낸 후에 정렬하는 것이 좋음
+
+       ```
+       { $match: { status: 'A' } },
+       { $sort: { age : -1 } }
+       ```
+
+     - Skip + limit : skip할 때 몇 개의 document에서 skip할 지 성능 영향
+
+       > 100만 개 중에 5개를 skip - 10개 중에 5개 skip 다름
+
+       ```
+       { $skip: 10 },
+       { $limit: 5 }
+       
+       <최적화>
+       { $limit: 15 },
+       { $skip: 10 }
+       ```
+
+- find와의 차이점
