@@ -1,0 +1,16 @@
+PODS:
+  - ZKCarousel (0.2.1)
+
+DEPENDENCIES:
+  - ZKCarousel
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ZKCarousel
+
+SPEC CHECKSUMS:
+  ZKCarousel: 2cb2a9bbfebfa50ff7e240ae061890cdc3ee3cd8
+
+PODFILE CHECKSUM: 4eacf3aaed22620568c18f807655951abc04016d
+
+COCOAPODS: 1.6.2
