@@ -33,3 +33,15 @@ contract MinimumViableToken {
 ```
 
 :bug: compiler version 지정해줘야 함
+
+
+
+#### 타입
+
+- reference type 
+
+  - array, struct는 메모리 or 스토리지에 위치할 수 있음
+
+    > 예외적으로 mapping은 항상 스토리지에 위치해야함(hash table을 trie에 저장했기 때문)
+
+  - 데이터 자체가 아닌 데이터가 저장된 메모리의 위치(pointer)를 가리킴
