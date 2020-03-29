@@ -36,17 +36,43 @@
 총 4종류
 
 1. State Trie
+
+   - account 정보 저장
+
+   - key : sha3(ethereum address) / value : rlp(ethereum account)
+
+     > ethereum account = [nonce, balance, storageRoot, codeHash]
+
 2. Storage Trie
+
+   - contract account의 storage 정보
+
 3. Transactions Trie
+
+   - 거래 정보
+
+   - key : rlp(transaction index) 
+
+     > transaction index : 블록 안의 거래 index
+
 4. Receipts Trie
 
+   - 부가적인 거래 정보(누적 가스 사용량, 로그 등)
+   - key : rlp(transaction index)
 
+transaction trie, receipts trie는 merkle proof를 위해 사용됨. 
+
+state trie, storage trie만 secure tree 사용. (keccak-256 hash 값인 256 bit 값을 키로 사용.)
+
+> secure tree 사용 이유는 디도스 공격을 막기 위해. (+ 키의 길이가 고정됨)
+
+<br/>
 
 #### Casper
 
 체크포인트 높이가 100의 배수인 블록
 
-ㅇㅖ치금 검증자가 검증에 참가하기 위해 캐스퍼 스마트 컨트랙트에 예치하는 금액(1500 이더)
+예치금 검증자가 검증에 참가하기 위해 캐스퍼 스마트 컨트랙트에 예치하는 금액(1500 이더)
 
 supermajority link 적어도 2/3의 검증인이 소스 ㅁ에서 타켓 B로 투표한 경우 체크포인트 A, B의 연결. A=> B로 표현
 
