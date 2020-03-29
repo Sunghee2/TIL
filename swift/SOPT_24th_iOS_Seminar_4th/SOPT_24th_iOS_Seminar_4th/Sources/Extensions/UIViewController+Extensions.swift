@@ -43,6 +43,16 @@ extension UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
+    func setCommentBtn(color : UIColor) {
+        let commentBtn = UIBarButtonItem(image: UIImage(named: "comment"),
+                                         style: .plain,
+                                         target: self,
+                                         action: nil)
+        navigationItem.rightBarButtonItem = commentBtn
+        navigationItem.rightBarButtonItem?.tintColor = color
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+    
     // pop func
     @objc func pop(){
         self.navigationController?.popViewController(animated: true)

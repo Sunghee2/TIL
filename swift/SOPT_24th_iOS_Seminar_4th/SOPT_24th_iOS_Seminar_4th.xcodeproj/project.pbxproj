@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4A5FE2EA40B300C739C54A53 /* Pods_SOPT_24th_iOS_Seminar_4th.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E626CF49E9C735BF1B5DE6B5 /* Pods_SOPT_24th_iOS_Seminar_4th.framework */; };
+		DE69DA6922990E1000D0FA20 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE69DA6822990E1000D0FA20 /* Comment.storyboard */; };
+		DE69DA6E229928AF00D0FA20 /* CommentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE69DA6C229928AF00D0FA20 /* CommentTVC.swift */; };
+		DE69DA6F229928AF00D0FA20 /* CommentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE69DA6D229928AF00D0FA20 /* CommentTVC.xib */; };
+		DE69DA7322992F2D00D0FA20 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE69DA7222992F2D00D0FA20 /* CommentVC.swift */; };
+		DE69DA75229965B100D0FA20 /* CommentNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE69DA74229965B100D0FA20 /* CommentNewVC.swift */; };
+		DE69DA7822997E2100D0FA20 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE69DA7722997E2100D0FA20 /* CommentService.swift */; };
+		DE69DA7B2299829800D0FA20 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE69DA7A2299829800D0FA20 /* Comment.swift */; };
 		F5C758DC22831ECF007BB2BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C758DB22831ECF007BB2BE /* AppDelegate.swift */; };
 		F5C758DE22831ECF007BB2BE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C758DD22831ECF007BB2BE /* LoginVC.swift */; };
 		F5C758E122831ECF007BB2BE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C758DF22831ECF007BB2BE /* Login.storyboard */; };
@@ -48,6 +55,13 @@
 /* Begin PBXFileReference section */
 		1D2E88FEB6F84B6168EC2522 /* Pods-SOPT_24th_iOS_Seminar_4th.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOPT_24th_iOS_Seminar_4th.release.xcconfig"; path = "Pods/Target Support Files/Pods-SOPT_24th_iOS_Seminar_4th/Pods-SOPT_24th_iOS_Seminar_4th.release.xcconfig"; sourceTree = "<group>"; };
 		2445175B468CD9842199DA06 /* Pods-SOPT_24th_iOS_Seminar_4th.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOPT_24th_iOS_Seminar_4th.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SOPT_24th_iOS_Seminar_4th/Pods-SOPT_24th_iOS_Seminar_4th.debug.xcconfig"; sourceTree = "<group>"; };
+		DE69DA6822990E1000D0FA20 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
+		DE69DA6C229928AF00D0FA20 /* CommentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVC.swift; sourceTree = "<group>"; };
+		DE69DA6D229928AF00D0FA20 /* CommentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTVC.xib; sourceTree = "<group>"; };
+		DE69DA7222992F2D00D0FA20 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		DE69DA74229965B100D0FA20 /* CommentNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNewVC.swift; sourceTree = "<group>"; };
+		DE69DA7722997E2100D0FA20 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		DE69DA7A2299829800D0FA20 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		E626CF49E9C735BF1B5DE6B5 /* Pods_SOPT_24th_iOS_Seminar_4th.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOPT_24th_iOS_Seminar_4th.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C758D822831ECF007BB2BE /* SOPT_24th_iOS_Seminar_4th.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOPT_24th_iOS_Seminar_4th.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C758DB22831ECF007BB2BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +132,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE69DA6A22991AE900D0FA20 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DE69DA7222992F2D00D0FA20 /* CommentVC.swift */,
+				DE69DA74229965B100D0FA20 /* CommentNewVC.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		DE69DA6B22991AF700D0FA20 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DE69DA6C229928AF00D0FA20 /* CommentTVC.swift */,
+				DE69DA6D229928AF00D0FA20 /* CommentTVC.xib */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		DE69DA7622997DEE00D0FA20 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DE69DA7722997E2100D0FA20 /* CommentService.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		DE69DA792299827300D0FA20 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DE69DA7A2299829800D0FA20 /* Comment.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		F5C758CF22831ECF007BB2BE = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +223,7 @@
 				F5C758E422831ED0007BB2BE /* LaunchScreen.storyboard */,
 				F5C758DF22831ECF007BB2BE /* Login.storyboard */,
 				F5C758F522833312007BB2BE /* Soptoon.storyboard */,
+				DE69DA6822990E1000D0FA20 /* Comment.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -182,6 +231,7 @@
 		F5C758F022831EFF007BB2BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE69DA6B22991AF700D0FA20 /* Comment */,
 				F5C7590E228348A9007BB2BE /* Soptoon */,
 			);
 			path = Views;
@@ -190,6 +240,7 @@
 		F5C758F122831F01007BB2BE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DE69DA6A22991AE900D0FA20 /* Comment */,
 				F5C7590A228344FA007BB2BE /* Login */,
 				F5C7590B228344FD007BB2BE /* Soptoon */,
 			);
@@ -199,6 +250,7 @@
 		F5C758F222831F05007BB2BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE69DA792299827300D0FA20 /* Comment */,
 				F5C75902228335A9007BB2BE /* Common */,
 				F5C75903228335AC007BB2BE /* Login */,
 				F5C7591D228352BD007BB2BE /* Soptoon */,
@@ -209,6 +261,7 @@
 		F5C758F322831F35007BB2BE /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				DE69DA7622997DEE00D0FA20 /* Comment */,
 				F5C758FE22833538007BB2BE /* Common */,
 				F5C758FF22833540007BB2BE /* Login */,
 				F5C759222283540C007BB2BE /* Soptoon */,
@@ -219,6 +272,7 @@
 		F5C758F422831F3A007BB2BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F5C75904228335BF007BB2BE /* ResponseArray.swift */,
 				F5C7591522834E08007BB2BE /* UIColor+Extensions.swift */,
 				F5C7591722834EAC007BB2BE /* UIView+Extensions.swift */,
 				F5C7591922834EFE007BB2BE /* UIViewController+Extensions.swift */,
@@ -255,7 +309,6 @@
 		F5C75902228335A9007BB2BE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F5C75904228335BF007BB2BE /* ResponseArray.swift */,
 				F5C75906228335DB007BB2BE /* ResponseObject.swift */,
 				F5C7590822834149007BB2BE /* ResponseString.swift */,
 			);
@@ -384,8 +437,10 @@
 			files = (
 				F5C758E622831ED0007BB2BE /* LaunchScreen.storyboard in Resources */,
 				F5C758E322831ED0007BB2BE /* Assets.xcassets in Resources */,
+				DE69DA6F229928AF00D0FA20 /* CommentTVC.xib in Resources */,
 				F5C759382284AB09007BB2BE /* EpisodeDetailCVC.xib in Resources */,
 				F5C758E122831ECF007BB2BE /* Login.storyboard in Resources */,
+				DE69DA6922990E1000D0FA20 /* Comment.storyboard in Resources */,
 				F5C759322283DD8F007BB2BE /* EpisodeTVC.xib in Resources */,
 				F5C758F622833312007BB2BE /* Soptoon.storyboard in Resources */,
 				F5C7591222834968007BB2BE /* SoptoonCVC.xib in Resources */,
@@ -453,21 +508,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5C7594022867665007BB2BE /* SignUpVC.swift in Sources */,
+				DE69DA75229965B100D0FA20 /* CommentNewVC.swift in Sources */,
 				F5C7591822834EAC007BB2BE /* UIView+Extensions.swift in Sources */,
 				F5C758F822833338007BB2BE /* APIManager.swift in Sources */,
 				F5C7590D2283450E007BB2BE /* SoptoonMainVC.swift in Sources */,
 				F5C75905228335BF007BB2BE /* ResponseArray.swift in Sources */,
 				F5C7592E2283DACC007BB2BE /* SoptoonInfo.swift in Sources */,
+				DE69DA7322992F2D00D0FA20 /* CommentVC.swift in Sources */,
 				F5C7591622834E08007BB2BE /* UIColor+Extensions.swift in Sources */,
 				F5C759282283D3CB007BB2BE /* EpisodeService.swift in Sources */,
 				F5C7592622835986007BB2BE /* UIImageView+Extensions.swift in Sources */,
 				F5C7591F228352E1007BB2BE /* Soptoon.swift in Sources */,
 				F5C7591C228351DE007BB2BE /* EpisodeVC.swift in Sources */,
 				F5C7590122833558007BB2BE /* AuthService.swift in Sources */,
+				DE69DA6E229928AF00D0FA20 /* CommentTVC.swift in Sources */,
 				F5C7591A22834EFE007BB2BE /* UIViewController+Extensions.swift in Sources */,
 				F5C7590922834149007BB2BE /* ResponseString.swift in Sources */,
 				F5C7593E2284ACA2007BB2BE /* EpisodeDetailService.swift in Sources */,
 				F5C759342283FC05007BB2BE /* EpisodeDetailVC.swift in Sources */,
+				DE69DA7822997E2100D0FA20 /* CommentService.swift in Sources */,
 				F5C758FC228334EF007BB2BE /* NetworkResult.swift in Sources */,
 				F5C7592A2283D70A007BB2BE /* Episode.swift in Sources */,
 				F5C759372284AB09007BB2BE /* EpisodeDetailCVC.swift in Sources */,
@@ -479,6 +538,7 @@
 				F5C758DE22831ECF007BB2BE /* LoginVC.swift in Sources */,
 				F5C759312283DD8F007BB2BE /* EpisodeTVC.swift in Sources */,
 				F5C7591122834968007BB2BE /* SoptoonCVC.swift in Sources */,
+				DE69DA7B2299829800D0FA20 /* Comment.swift in Sources */,
 				F5C758DC22831ECF007BB2BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

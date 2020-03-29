@@ -96,8 +96,9 @@ extension EpisodeVC: UITableViewDelegate {
     
         let dvc = storyboard?.instantiateViewController(withIdentifier: "EpisodeDetailVC") as! EpisodeDetailVC
     
-//        let episode = episodeList[indexPath.row]
-        
+        let episode = episodeList[indexPath.row]
+
+        dvc.epIdx = episode.idx
         
         navigationController?.pushViewController(dvc, animated: true)
     }

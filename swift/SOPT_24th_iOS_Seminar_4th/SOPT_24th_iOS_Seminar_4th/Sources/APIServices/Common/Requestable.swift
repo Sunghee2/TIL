@@ -25,9 +25,13 @@ extension Requestable {
             .responseObject { (res: DataResponse<NetworkData>) in
                 switch res.result {
                 case .success:
+                    print("success!")
+                    print(res)
                     guard let value = res.result.value else { return }
                     completion(.success(value))
                 case .failure(let err):
+                    print("error!")
+                    print(res)
                     completion(.error(err))
                 }
         }

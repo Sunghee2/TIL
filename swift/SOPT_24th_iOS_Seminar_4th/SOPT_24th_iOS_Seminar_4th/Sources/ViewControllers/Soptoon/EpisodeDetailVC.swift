@@ -11,48 +11,72 @@ import UIKit
 class EpisodeDetailVC: UIViewController {
     
     var epIdx: Int?
+    var episodeImgs = [String]()
+    var epInfo: EpisodeInfo?
 
     @IBOutlet weak var episodeDetailCV: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        
-       setBackBtn(color: UIColor.brownishGrey)
+        setNavigationBar()
+        registerCVC()
         episodeDetailCV.delegate = self
         episodeDetailCV.dataSource = self
-        
-//        self.view.addSubview(UIView(frame: CGRect))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let idx = epIdx else {return}
-        
-        EpisodeDetailService.shared.getEpisodeDetail(epIdx: idx) {
+        getEpisodeDetail(epIdx: idx)
+    }
+    
+    func getEpisodeDetail(epIdx: Int) {
+        EpisodeDetailService.shared.getEpisodeDetail(epIdx: epIdx) {
             [weak self]
             (data) in
             
             guard let `self` = self else { return }
+            guard let data = data.data else { return }
             
-//            self.episodeList = list
-//            self.episodeTV.reloadData()
+            self.episodeImgs = data.epImgs!
+            self.epInfo = data.epInfo!
+            self.episodeDetailCV.reloadData()
+            
+            let chapter: Int = (self.epInfo?.chapter)!
+            let title: String = (self.epInfo?.title)!
+            
+            self.navigationItem.title = "\(chapter)화. \(title)"
         }
     }
+    
+    func setNavigationBar() {
+        self.setBackBtn(color: UIColor.brownishGrey)
+        self.setCommentBtn(color: UIColor.yellow)
+        self.setNavigationBarShadow()
+    }
+    
+    func registerCVC() {
+        let nibName = UINib(nibName: "EpisodeDetailCVC", bundle: nil)
+        episodeDetailCV.register(nibName, forCellWithReuseIdentifier: "EpisodeDetailCVC")
+    }
 }
+
+
 
 extension EpisodeDetailVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return episodeImgs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EpisodeDetailCVC", for: indexPath) as! EpisodeDetailCVC
         
-        
+        let episodeImg = episodeImgs[indexPath.row]
+        cell.EpisodeDeailImg.imageFromUrl(episodeImg, defaultImgPath: "logoImg")
         
         return cell
     }

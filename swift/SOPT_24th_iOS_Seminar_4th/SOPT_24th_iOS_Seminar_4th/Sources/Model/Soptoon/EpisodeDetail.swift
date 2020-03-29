@@ -9,7 +9,7 @@
 import ObjectMapper
 
 struct EpisodeDetail: Mappable {
-    var epInfo: [EpisodeInfo]?
+    var epInfo: EpisodeInfo?
     var epImgs: [String]?
     
     init?(map: Map) {}

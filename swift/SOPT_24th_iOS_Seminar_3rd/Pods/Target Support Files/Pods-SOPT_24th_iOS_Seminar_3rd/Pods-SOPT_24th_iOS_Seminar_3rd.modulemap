@@ -1,0 +1,6 @@
+framework module Pods_SOPT_24th_iOS_Seminar_3rd {
+  umbrella header "Pods-SOPT_24th_iOS_Seminar_3rd-umbrella.h"
+
+  export *
+  module * { export * }
+}

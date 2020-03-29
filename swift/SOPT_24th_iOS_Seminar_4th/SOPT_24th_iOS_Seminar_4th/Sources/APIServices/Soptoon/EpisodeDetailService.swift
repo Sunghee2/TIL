@@ -29,8 +29,7 @@ struct EpisodeDetailService: APIManager, Requestable {
                 print("######### success #########")
                 print(value)
                 print("######### success #########")
-                
-                completion(value)
+
             case .error(let error):
                 
                 print("######### error #########")
@@ -40,4 +39,3 @@ struct EpisodeDetailService: APIManager, Requestable {
         }
     }
 }
-

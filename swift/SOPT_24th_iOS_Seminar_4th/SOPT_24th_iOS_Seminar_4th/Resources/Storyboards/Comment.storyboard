@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CommentVC-->
+        <scene sceneID="UV7-m6-O5J">
+            <objects>
+                <viewController id="IRD-jU-sTS" customClass="CommentVC" customModule="SOPT_24th_iOS_Seminar_4th" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5V8-xi-Gs3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7TW-1b-Vg1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="595"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="i72-rc-BJG">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i72-rc-BJG" id="ytY-Xc-G0h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbO-83-F4X">
+                                <rect key="frame" x="0.0" y="615" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.81176470588235294" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <state key="normal" title="댓글쓰기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="writeBtnAction:" destination="IRD-jU-sTS" eventType="touchUpInside" id="l7r-FZ-pBi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WH7-wK-2rH"/>
+                    </view>
+                    <connections>
+                        <outlet property="commentTV" destination="7TW-1b-Vg1" id="WXg-8A-QJT"/>
+                        <outlet property="writeBtn" destination="TbO-83-F4X" id="76g-k4-Zit"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdA-Cz-PoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="89.505247376311857"/>
+        </scene>
+        <!--Comment NewVC-->
+        <scene sceneID="Hhp-Kf-x9p">
+            <objects>
+                <viewController id="dKs-3d-aPF" customClass="CommentNewVC" customModule="SOPT_24th_iOS_Seminar_4th" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KwA-Dm-VA9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iRO-mx-u09">
+                                <rect key="frame" x="16" y="77" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="placeholder">여기를 눌러서 댓글을 작성할 수 있습니다. 
+솝툰에서 당신의 이야기를 들려주세요:)</string>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qS-YC-zMP">
+                                <rect key="frame" x="145" y="379" width="139" height="85"/>
+                                <state key="normal" title="Button" image="writingPlusBtn"/>
+                                <connections>
+                                    <action selector="imageBtnAction:" destination="dKs-3d-aPF" eventType="touchUpInside" id="Bbt-KE-b4S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2qS-YC-zMP" firstAttribute="top" secondItem="hGt-jX-358" secondAttribute="top" constant="315" id="6pi-cZ-lQx"/>
+                            <constraint firstItem="2qS-YC-zMP" firstAttribute="centerY" secondItem="hGt-jX-358" secondAttribute="centerY" id="9FF-EY-dUh"/>
+                            <constraint firstItem="hGt-jX-358" firstAttribute="trailing" secondItem="2qS-YC-zMP" secondAttribute="trailing" constant="145" id="GRD-5a-9bX"/>
+                            <constraint firstItem="2qS-YC-zMP" firstAttribute="width" secondItem="KwA-Dm-VA9" secondAttribute="height" multiplier="85:667" id="h0M-4g-jvW"/>
+                            <constraint firstItem="2qS-YC-zMP" firstAttribute="leading" secondItem="hGt-jX-358" secondAttribute="leading" constant="145" id="xCp-uA-Hag"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hGt-jX-358"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d7X-i2-JJB">
+                        <barButtonItem key="leftBarButtonItem" title="취소" id="7li-Ox-OpG">
+                            <color key="tintColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelBtnAction:" destination="dKs-3d-aPF" id="PMt-F3-ev0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="확인" id="icI-cN-fJS">
+                            <color key="tintColor" red="0.96078431372549022" green="0.81176470588235294" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="okBtnAction:" destination="dKs-3d-aPF" id="4I0-GS-9LV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelBtn" destination="7li-Ox-OpG" id="TEE-7a-Cb5"/>
+                        <outlet property="commentTF" destination="iRO-mx-u09" id="hMW-Fc-hZj"/>
+                        <outlet property="imageBtn" destination="2qS-YC-zMP" id="1xj-h4-HFa"/>
+                        <outlet property="okBtn" destination="icI-cN-fJS" id="io4-ci-V14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynj-CC-6d4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783.2" y="778.56071964017997"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K82-m6-I1p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OPh-Th-9QX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xgN-cr-3Mp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dKs-3d-aPF" kind="relationship" relationship="rootViewController" id="9wC-fs-LNi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUM-pS-QwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="778.56071964017997"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="writingPlusBtn" width="85" height="85"/>
+    </resources>
+</document>
