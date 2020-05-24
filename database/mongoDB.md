@@ -22,7 +22,7 @@
   - _id
 
     - 12bytes의 hexadecimal값으로, 각 document의 unique value
-    - 첫 4byte : timestamp, 3 byte : machine id, 2 byte : mongodb 서버의 process id, 3 bytes 순차번호
+    - 첫 4byte : timestamp, 3 byte : machine id(보통 드라이버따라 다르지만 mac address + ip address), 2 byte : mongodb 서버의 process id, 3 bytes 순차번호(랜덤 번호에서 auto increment)
 
   - dynamic한 schema를 가지고 있음(서로 다른 key를 가지고 있을 수 있음)
 
@@ -99,7 +99,103 @@ https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&pro
 
 ## 샤딩
 
-https://www.youtube.com/watch?v=_SVS4qn8HuY&list=PL9mhQYIlKEheyXIEL8RQts4zV_uMwdWFj&index=10&t=0s
+- Scale up / Scale out
+
+  - 한 서버에서 처리하지 못할 정도의 부하가 발생했을 때 해결책
+  - `Scale up` : 머신 자체의 성능을 올리는 것 (비용 큼) (= vertical scaling)
+  - `Scale out` : 새로운 머신 추가 (= horizontal scaling)
+  - `sharding` :  `scale out` 의 일종으로 데이터를 여러 서버에 나눠서 저장하는 방식
+  - `shard` : 데이터가 저장된 서버
+  - `sharded cluster` : `shard` 를 포함한 몽고디비 호
+
+- 목적
+
+  - 데이터의 분산 저장
+
+    - 단 한 대의 서버에 빅데이터 저장하는 것 불가능
+      - 문제점 : 서비스 성능 저하, 하드웨어 한계
+    - 데이터를 분산하여 순차적으로 저장한다면 한 대 이상에서 트래픽을 감당하기 때문에 부하를 분산하는 효과가 있음
+
+  - 백업, 복구 전략
+
+    - 서버의 데이터가 유실된다면 그 데이터 양은 상상 초월할 것이고 시스템 복구에 엄청난 시간, 비용 소요
+
+    -> 미리 데이터를 분산하여 저장하면 리스크 낮아짐
+
+  - 빠른 성능
+    - 여러 대의 독립된 프로세스가 병렬로 작업을 동시에 수행
+
+- 특징
+
+  - 성능보장을 위해 3대 이상의 서버를 샤드로 활용하는 것 추천
+
+- 장점
+
+  - 시스템의 성능 향상
+  - 데이터 유실 가능성으로부터 보호
+
+- 단점
+
+  - 메모리 20%~30% 추가 사용
+
+    > 샤드 시스템 구축 시 사용하는 라우팅서버인 mongos와 OpLog, Balancer 프로세스가 추가로 메모리를 사용하기 때문.
+
+- 시스템 구조
+
+  ![img](https://static.packt-cdn.com/products/9781783982608/graphics/3eec5c1b-ecab-4131-9a67-a4e277c1737a.png)
+
+  - `mongos` : router 역할
+
+    - 하나 이상의 프로세스를 사용함
+    - 빅데이터를 샤드키를 중심으로 샤드 서버로 분산해주는 프로세스임 
+    - 데이터를 쓰고 읽는 작업 가능
+
+  - `replica set` : 샤드 안에서 데이터 분실 가능성 방지 위해 mongod를 이용해서 replica set 만듦
+
+  - `config servers` : 메타 데이터 저장/관리(어떤 데이터가 어디에 저장되어있는지)
+
+    - 샤드 서버와 별도의 서버에 구축이 기본
+
+      > 분산해서 처리할 때 장애가 발생해도 신속하게 대응 가능
+
+    - 샤드 서버에 비해 저사양 서버 사용 가능(단순히 메타 데이터라서)
+
+- 샤딩 시스템 계층
+
+  ![img](http://mongodb.citsoft.net/wp-content/uploads/pic4-2.png)
+
+  - 중계자 계층(`mongos`)
+    - 샤드 메타 정보를 저장해서 응용 계층으로부터 전달된 쿼리를 분석하여 적절한 샤드에 명령을 수행시킨 뒤 그 결과를 응용 계층으로 다시 전달해줌
+  - `application` : 우리가 사용하는 어플리케이션
+
+- shard key 구성
+
+  - 여러 개의 샤드 서버로 분할될 기준 필드(partition, load balancing 기준) -> 데이터 저장 성능에 절대적인 영향
+
+  - cardinality를 보고 선택
+
+    > 데이터 분포가 넓으면 낮음
+    >
+    > ex) 사원번호는 고유한 값으로 구성되면 높은 cardinality, 성별로 나누면 낮음
+
+  - chunk migration의 횟수와 빈도를 결정
+
+    > chunk : 데이터 분할 단위 (기본적으로 64MB)
+    >
+    > migration : 데이터의 이동, 서버에 균등하게 데이터를 재조정하는 과정
+
+    - 기본 설정 단위보다 빈번하게 chunk migration이 발생 -> chunk 단위 크게
+    - 하나의 서버에 데이터가 집중되고 골고루 데이터가 분산되지 않음 -> chunk 단위 작게 
+
+- MongoDB 샤딩 한계
+
+  - 한 chunk에 저장될 수 있는 BSON 객체 개수 25만 개
+
+  - mongos 밑의 여러 대 서버 중 하나가 장애가 발생했을 때, mongos는 이 서버가 여전히 살아있다고 생각하고 데이터를 계속 그 쪽으로 보내면 데이터가 유실됨.
+
+    > 정말 중요한 데이터는 RDBMS에 저장
+    >
+    > MongoDB에는 대량으로 발생하고 일부 데이터가 유실되더라도 문제가 없는 종류의 데이터 처리
 
 ## 최적화
 
