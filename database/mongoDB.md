@@ -1,6 +1,6 @@
 # MongoDB
 
-- C++로 작성된 오픈소스 Document-Oriented적 Cross-platform 데이터 베이스
+- C++로 작성된 오픈소스 Document-Oriented적 Cross-platform 데이터 베이스 (NoSQL database)
 
 - Collection
 
@@ -50,7 +50,7 @@ db.users.find({
 
 ## Index
 
-- 자주 조회되는 필드를 따로 저장하여 조최 및 정렬 시 속도 향상
+- 자주 조회되는 필드를 따로 저장하여 조회 및 정렬 시 속도 향상
 - index를 걸면 해당 key를 가지고 document를 가리키는 포인터값으로 이루어진 B-Tree(Balanced Binary search Tree)생성
 - 오름차순 1, 내림차순 -1 (정렬방향을 고려해야함)
 - 쿼리 당 하나의 인덱스만 사용하므로 주의
@@ -60,8 +60,6 @@ db.users.find({
 ```
 db.users.createIndex({ name: 1, age: -1 })
 ```
-
-https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&proxyReferer=https%3A%2F%2Fwww.google.com%2F
 
 > 만약 인덱스가 없는 상태에서의 테스트가 필요하다면 다음과 같이 `$natural` 옵션을 넣어서 테스트 할 수 있습니다.
 >
@@ -97,6 +95,12 @@ https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&pro
 
   - geoNear 사용할 때? 이건 안 쓸 것 같아서 자세히 적진 X -> 나중에 document에서 확인하길(https://docs.mongodb.com/manual/core/aggregation-pipeline/#aggregation-pipeline-operators-and-performance)
 
+## 쿼리 튜닝
+
+- 쿼리 수행 시 적절하게 사용되어 성능 향상에 도움을 줄 수 있는 인덱스 설정
+
+https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&proxyReferer=https%253A%252F%252Fwww.google.com%252F
+
 ## 샤딩
 
 - Scale up / Scale out
@@ -123,6 +127,7 @@ https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&pro
     -> 미리 데이터를 분산하여 저장하면 리스크 낮아짐
 
   - 빠른 성능
+    
     - 여러 대의 독립된 프로세스가 병렬로 작업을 동시에 수행
 
 - 특징
@@ -164,7 +169,7 @@ https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221096609752&pro
 
   ![img](http://mongodb.citsoft.net/wp-content/uploads/pic4-2.png)
 
-  - 중계자 계층(`mongos`)
+  - 중자 계층(`mongos`)
     - 샤드 메타 정보를 저장해서 응용 계층으로부터 전달된 쿼리를 분석하여 적절한 샤드에 명령을 수행시킨 뒤 그 결과를 응용 계층으로 다시 전달해줌
   - `application` : 우리가 사용하는 어플리케이션
 

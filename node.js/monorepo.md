@@ -1,5 +1,9 @@
 # Monorepo
 
+https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306
+
+
+
 Monorepo는 여러 프로젝트 코드를 하나의 repository에서 관리하는 패턴입니다. 대표적으로 Lerna, yarn workspaces가 있습니다.
 
 ![img](https://miro.medium.com/max/1342/1*jXZ26bo8TQE1Q0RBMan8kQ.jpeg)

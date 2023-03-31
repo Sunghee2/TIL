@@ -33,7 +33,7 @@ React
   - JSX : DOM 엘리먼트들을 만들 때 javascript 형식으로 작성해야하는 것을 XML과 비슷한 형태로 작성할 수 있게 해 줌
     
       - 조건부 연산자 : 삼항연산자, &&, ||
-    
+      
         ```javascript
         {condition? 'ok':null}
         {condition && 'ok'}
@@ -128,7 +128,7 @@ ReactDOM.render(
 
      - Reconciliation: The diffing algorithm
 
-       react의 reconciliation은 어떤 변경에 대한 전/후 엘리먼트 트리를 비교(diff)하여 갱신이 필요한 부분만을 찾아 업데이트 하는 것을 의미. react는 렌더링에서 reconciliation작업을 선행하기 때문에 플랫폼 ui에 대한 제어를 최소화 시키는 것(보통 ui 제어 비용은 비싸기 때문). 즉, 브라우저에서 dom에 대한 제어를 최소화시키는 것
+       react의 reconciliation은 어떤 변경에 대한 전/후 엘리먼트 트리를 비교(diff)하여 갱신이 필요한 부분만을 찾아 업데이트 하는 것을 의미. react는 렌더링에서 reconciliation작업을 선행하기 때문에 플랫폼 ui에 대한 제어를 최소화 시키는 것(보통 ui 제어 비용은 비싸기 때문). 즉, **브라우저에서 dom에 대한 제어를 최소화시키는 것**
 
        > https://meetup.toast.com/posts/110
 
@@ -152,9 +152,9 @@ ReactDOM.render(
 
      - 업데이트 하는 경우
      1. props 바뀔 때
-       2. state 바뀔 때
+     2. state 바뀔 때
      3. 부모 컴포넌트가 리렌더링될 때
-       4. this.forceUpdate로 강제로 렌더링을 트리거할 때
+     4. this.forceUpdate로 강제로 렌더링을 트리거할 때
      
      unmounting : React 엘리먼트를 DOM에서 제거할 때 발생
      
@@ -704,7 +704,7 @@ ReactDOM.render(
   > 3. 데이터 준비가 완료되면 fetch 작업이 완료되었다고 액션을 통해 Redux에 알려 준다.
   > 4. 리듀서(reducer)를 통해 받은 데이터를 사용해 Redux는 스토어(store)에 있는 state 트리를 업데이트한다.
   > 5. 컴포넌트는 prop를 통해서 필요한 데이터를 전달받고, 자식 요소인 컴포넌트가 렌더링될 때 값을 전달한다.
-  
+
    - 사용 규칙
   - 하나의 애플리케이션 안에는 하나의 스토어만
      - state는 읽기전용(불변성 유지)
